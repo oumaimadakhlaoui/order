@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 
 @Entity
-data class Customer(
+data class CustomerEntity(
     @Id
     @GeneratedValue
     val customerId: Long = 0,
