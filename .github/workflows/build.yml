@@ -3,7 +3,18 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - main
+      - release
+    path-ignore:
+      - 'README.md'
   workflow_dispatch:
+    push:
+      branches:
+        - main
+        - 'feature/**'
+      path-ignore:
+        - 'README.md'
 jobs:
   build:
     name: build micro-service
