@@ -10,7 +10,6 @@ on:
     secrets:
       user-name:
         required: false
-        default: USERNAME
 jobs:
   deploy:
     name: Deployment
