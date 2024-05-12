@@ -10,7 +10,6 @@ on:
 jobs:
   deploy:
     name: Deployment
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
