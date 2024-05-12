@@ -1,0 +1,13 @@
+name: using Reusable workflow
+on: push
+jobs:
+  build:
+    name: build
+    uses: .github/workflows/reusable.yml
+  deploy:
+    name: Deployment
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Virtual deployment
+        run: echo "Start deployment ..."

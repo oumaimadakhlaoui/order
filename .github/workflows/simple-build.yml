@@ -8,8 +8,6 @@ jobs:
   build:
     name: Build micro-service
     runs-on: ubuntu-latest
-    outputs:
-      build-file: ${{ steps.publish.outputs.build-filename }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
