@@ -24,6 +24,13 @@ jobs:
     name: Deployment
     uses: ./.github/workflows/reusable.yml
     with:
-      artifact-name: build/libs
+      artifact-name: build-files
     secrets:
       user-name: ${{ secrets.username }}
+  print:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: let's print
+        run: ${{ needs.deploy.outputs.result }}
+
