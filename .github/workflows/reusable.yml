@@ -11,7 +11,6 @@ on:
       user-name:
         required: false
         default: USERNAME
-        type: string
 jobs:
   deploy:
     name: Deployment
