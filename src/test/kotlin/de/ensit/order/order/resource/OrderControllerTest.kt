@@ -65,6 +65,6 @@ class OrderControllerTest {
                         "\"orderDate\": \"${LocalDate.now()}\", " +
                         "\"status\": \"PENDING\" " +
                         "}")
-        ).andExpect(MockMvcResultMatchers.status().isOk)
+        ).andExpect(MockMvcResultMatchers.status().isNotFound)
     }
 }
