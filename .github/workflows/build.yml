@@ -19,6 +19,8 @@ jobs:
   build:
     name: Build micro-service
     runs-on: ubuntu-latest
+    outputs:
+      build-file: ${{ steps.publish.outputs.build-filename }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -29,6 +31,10 @@ jobs:
           distribution: 'temurin'
       - name: Build project
         run: ./gradlew clean build
+      - name: Publish build filename
+        id: publish
+        # Display the filename and save it
+        run: find build/libs/*plain* -type f -execdir echo 'build-filename={}' >> $GITHUB_OUTPUT ';'
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
@@ -43,7 +49,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-files
-      - name: Output contents
+      - name: Display job artifacts
         run: ls
+      - name: Job output from build
+        run: echo $ {{ needs.build.outputs.build-file }}
       - name: Virtual deployment
         run: echo "Start deployment..."
