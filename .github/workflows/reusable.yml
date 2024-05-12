@@ -1,16 +1,23 @@
 name: Reusable build
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: Get value from parent
+        required: false
+        default: build-files
+        type: string
 jobs:
-  build:
-    name: Build micro-service
+  deploy:
+    name: Deployment
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Spring Gradle Build Action
-        uses: spring-io/spring-gradle-build-action@v2
+      - name: Download artifact
+        run: action/download-artifact@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
-      - name: Build project
-        run: ./gradlew clean build
+          name: ${{ inputs.artifact-name }}
+      - name: List files
+        run: ls
+      - name: Virtual deployment
+        run: echo "Start deployment ..."

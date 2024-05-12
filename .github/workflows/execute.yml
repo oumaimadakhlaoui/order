@@ -2,12 +2,24 @@ name: using Reusable workflow
 on: push
 jobs:
   build:
-    name: build
-    uses: ./.github/workflows/reusable.yml
-  deploy:
-    name: Deployment
-    needs: build
+    name: Build micro-service
     runs-on: ubuntu-latest
     steps:
-      - name: Virtual deployment
-        run: echo "Start deployment ..."
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Spring Gradle Build Action
+        uses: spring-io/spring-gradle-build-action@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build project
+        run: ./gradlew clean build
+      - name: Upload artifact
+        run: action/upload-artifact@v3
+        with:
+          name: build-files
+          path: build/libs
+  deploy:
+    needs: build
+    name: Deployment
+    uses: ./.github/workflows/reusable.yml
