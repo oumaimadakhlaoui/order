@@ -15,7 +15,7 @@ jobs:
       - name: Build project
         run: ./gradlew clean build
       - name: Upload artifact
-        run: action/upload-artifact@v3
+        uses: action/upload-artifact@v3
         with:
           name: build-files
           path: build/libs
