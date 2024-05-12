@@ -29,6 +29,11 @@ jobs:
           distribution: 'temurin'
       - name: Build project
         run: ./gradlew clean build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-files
+          path: build/libs
   deploy:
     name: Deploy to INT environment
     needs: build
