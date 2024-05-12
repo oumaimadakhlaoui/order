@@ -9,18 +9,16 @@ data class Order (
     val customerId: Long = 0L,
     val orderDate: LocalDate = LocalDate.now(),
     val status: OrderStatus = OrderStatus.PENDING
-) {
-    fun isPending(): Boolean =
-        status == OrderStatus.PENDING
-
-    fun isShipped(): Boolean =
-        status == OrderStatus.SHIPPED
-
-    fun isDelivered(): Boolean =
-        status == OrderStatus.DELIVERED
-}
+)
 
 fun OrderEntity.toOrder() = Order(
+    orderId = orderId,
+    customerId = customerId,
+    orderDate = orderDate,
+    status= status
+)
+
+fun Order.toOrderEntity() = OrderEntity(
     orderId = orderId,
     customerId = customerId,
     orderDate = orderDate,

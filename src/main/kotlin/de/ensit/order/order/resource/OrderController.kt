@@ -1,33 +1,40 @@
 package de.ensit.order.order.resource
 
 import de.ensit.order.order.service.OrderService
-import de.ensit.order.order.repository.entity.OrderEntity
+import de.ensit.order.order.to.Order
 import org.springframework.web.bind.annotation.*
 
 @RestController
 class OrderController(private val orderService: OrderService) {
 
     @GetMapping("/orders")
-    fun getOrders() = orderService.getOrders()
+    fun getOrders(): List<Order> =
+        orderService.getOrders()
 
     @GetMapping("/orders/{orderId}")
-    fun getOrderById(@PathVariable orderId: Long) = orderService.getOrderById(orderId)
+    fun getOrderById(@PathVariable orderId: Long): Order =
+        orderService.getOrderById(orderId)
 
     @PostMapping("/order")
-    fun createOrder(orderEntity: OrderEntity) = orderService.createOrUpdateOrder(orderEntity)
+    fun createOrder(order: Order): Order =
+        orderService.createOrUpdateOrder(order)
 
     @PutMapping("/order")
-    fun updateOrder(orderEntity: OrderEntity) = orderService.createOrUpdateOrder(orderEntity)
+    fun updateOrder(order: Order): Order =
+        orderService.createOrUpdateOrder(order)
 
     @DeleteMapping("/order/{orderId}")
-    fun deleteOrder(@PathVariable orderId: Long) = orderService.deleteOrder(orderId)
+    fun deleteOrder(@PathVariable orderId: Long) =
+        orderService.deleteOrder(orderId)
 
     @GetMapping("/orders/pending")
     fun getPendingOrders() = orderService.getPendingOrders()
 
     @GetMapping("/orders/shipped")
-    fun getShippedOrders() = orderService.getShippedOrders()
+    fun getShippedOrders(): List<Order> =
+        orderService.getShippedOrders()
 
     @GetMapping("/orders/delivered")
-    fun getDeliveredOrders() = orderService.getDeliveredOrders()
+    fun getDeliveredOrders(): List<Order> =
+        orderService.getDeliveredOrders()
 }
