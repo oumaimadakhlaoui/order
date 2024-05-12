@@ -1,4 +1,4 @@
-package de.maibornwolff.alabenkhlifa.monolith.order_service.customer
+package de.ensit.order.customer.repository.entity
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
