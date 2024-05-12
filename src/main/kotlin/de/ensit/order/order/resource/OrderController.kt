@@ -1,5 +1,7 @@
-package de.maibornwolff.alabenkhlifa.monolith.order_service.order
+package de.ensit.order.order.resource
 
+import de.ensit.order.order.service.OrderService
+import de.ensit.order.order.repository.entity.OrderEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -12,10 +14,10 @@ class OrderController(private val orderService: OrderService) {
     fun getOrderById(@PathVariable orderId: Long) = orderService.getOrderById(orderId)
 
     @PostMapping("/order")
-    fun createOrder(order: Order) = orderService.createOrUpdateOrder(order)
+    fun createOrder(orderEntity: OrderEntity) = orderService.createOrUpdateOrder(orderEntity)
 
     @PutMapping("/order")
-    fun updateOrder(order: Order) = orderService.createOrUpdateOrder(order)
+    fun updateOrder(orderEntity: OrderEntity) = orderService.createOrUpdateOrder(orderEntity)
 
     @DeleteMapping("/order/{orderId}")
     fun deleteOrder(@PathVariable orderId: Long) = orderService.deleteOrder(orderId)
