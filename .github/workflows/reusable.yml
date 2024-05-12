@@ -7,6 +7,11 @@ on:
         required: false
         default: build-files
         type: string
+      secrets:
+        user-name:
+          required: false
+          default: USERNAME
+          type: string
 jobs:
   deploy:
     name: Deployment
@@ -19,4 +24,4 @@ jobs:
       - name: List files
         run: ls
       - name: Virtual deployment
-        run: echo "Start deployment ..."
+        run: echo "Start deployment --> ${{ secrets.user-name }} ..."

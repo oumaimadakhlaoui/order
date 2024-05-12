@@ -23,3 +23,7 @@ jobs:
     needs: build
     name: Deployment
     uses: ./.github/workflows/reusable.yml
+    with:
+      artifact-name: build/libs
+    secrets:
+      user-name: ${{ secrets.username }}
