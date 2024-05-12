@@ -22,8 +22,10 @@ jobs:
         run: ./gradlew clean build
   deploy:
     name: Deploy to INT environment
+    env:
+      USERNAME: ${{ secrets.username }}
     needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Virtual deployment
-        run: echo "Start deployment..."
+        run: echo "Start deployment by ${{ env.USERNAME }} ..."
