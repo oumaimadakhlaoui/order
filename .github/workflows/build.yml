@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - release
       - 'feature/**'
     path-ignore:
       - 'README.md'
@@ -24,15 +24,11 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      #- name: Cache dependencies
-      #  uses: actions/cache@v3
-      #  with:
-      #    path: ~/.gradle
-      #- name: Spring Gradle Build Action
-      #  uses: spring-io/spring-gradle-build-action@v2
-      #  with:
-      #    java-version: '17'
-      #   distribution: 'temurin'
+      - name: Spring Gradle Build Action
+        uses: spring-io/spring-gradle-build-action@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
       - name: Build project
         run: ./gradlew clean build
       - name: Publish build filename

@@ -1,0 +1,29 @@
+name: Build project
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Build micro-service
+    runs-on: ubuntu-latest
+    outputs:
+      build-file: ${{ steps.publish.outputs.build-filename }}
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Spring Gradle Build Action
+        uses: spring-io/spring-gradle-build-action@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Build project
+        run: ./gradlew clean build
+  deploy:
+    name: Deploy to INT environment
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Virtual deployment
+        run: echo "Start deployment..."
