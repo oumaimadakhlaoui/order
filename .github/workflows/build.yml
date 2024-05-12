@@ -52,6 +52,6 @@ jobs:
       - name: Display job artifacts
         run: ls
       - name: Job output from build
-        run: echo $ {{ needs.build.outputs.build-file }}
+        run: echo ${{ needs.build.outputs.build-file }}
       - name: Virtual deployment
         run: echo "Start deployment..."
