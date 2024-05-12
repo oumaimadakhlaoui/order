@@ -22,7 +22,7 @@ jobs:
         id: build-project-step
         run: ./gradlew clean build
       - name: Print YES if we tests succeeded
-        if: build-project-step.outcome == 'success'
+        if: steps.build-project-step.outcome == 'success'
         run: echo "YES...."
   deploy:
     name: Deploy to INT environment
