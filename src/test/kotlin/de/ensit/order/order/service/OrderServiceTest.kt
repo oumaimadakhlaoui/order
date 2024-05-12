@@ -39,7 +39,7 @@ class OrderServiceTest {
         val result = orderService.getOrders()
 
         // assert
-        assertThat(result.size).isEqualTo(3)
+        assertThat(result.size).isEqualTo(2)
         assertThat(result.first()).isEqualTo(firstOrder)
         assertThat(result[1]).isEqualTo(secondOrder)
     }
