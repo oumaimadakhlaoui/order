@@ -1,5 +1,10 @@
 name: 'Deploy action'
 description: 'Deploy custom action'
+inputs:
+  name:
+    description: 'name used'
+    required: false
+    default: 'Hello'
 runs:
   using: 'composite'
   steps:
@@ -9,4 +14,4 @@ runs:
     - name: Next one
       if: success()
       shell: bash
-      run: echo "Done.. yes"
+      run: echo "Done.. yes ${{ inputs.name }}"
