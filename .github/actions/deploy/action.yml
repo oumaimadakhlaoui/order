@@ -4,7 +4,9 @@ runs:
   using: 'composite'
   steps:
     - name: Virtual deployment
+      shell: bash
       run: echo "Start deployment..."
     - name: Next one
       if: success()
+      shell: bash
       run: echo "Done.. yes"
