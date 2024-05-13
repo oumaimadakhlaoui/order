@@ -9,6 +9,9 @@ jobs:
       - name:  Get code
         uses: actions/checkout@v3
       - name: use composite action
+        id: use-comp
         uses: ./.github/actions/deploy
         with:
           name: ${{ secrets.username }}
+      - name: Get action result
+        run: echo "Really got ${{ use-comp.outputs.action-result }}"

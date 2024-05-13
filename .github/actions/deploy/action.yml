@@ -5,6 +5,10 @@ inputs:
     description: 'name used'
     required: false
     default: 'Hello'
+outputs:
+  action-result:
+    description: 'result from action'
+    value: ${{ steps.save-var.result }}
 runs:
   using: 'composite'
   steps:
@@ -15,3 +19,7 @@ runs:
       if: success()
       shell: bash
       run: echo "Done.. yes ${{ inputs.name }}"
+    - name: Save var
+      id: save-var
+      shell: bash
+      run: echo "result=Hello Salouma" >> $GITHUB_OUTPUT
