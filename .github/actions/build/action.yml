@@ -1,0 +1,5 @@
+name: 'Run docker action'
+description: 'needed fro running docker'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
