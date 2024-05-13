@@ -1,5 +1,8 @@
 name: using Reusable workflow
-on: push
+on:
+  push:
+    branches:
+      -feature
 jobs:
   build:
     name: Build micro-service

@@ -1,0 +1,10 @@
+name: 'Deploy action'
+description: 'Deploy custom action'
+runs:
+  using: 'composite'
+  steps:
+    - name: Virtual deployment
+      run: echo "Start deployment..."
+    - name: Next one
+      if: success()
+      run: echo "Done.. yes"

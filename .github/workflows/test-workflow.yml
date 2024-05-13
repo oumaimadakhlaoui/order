@@ -1,8 +1,12 @@
 name: Test workflow
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name:  Get code
         uses: actions/checkout@v3
+      - name: use composite action
+        uses: ./.github/actions/deploy
