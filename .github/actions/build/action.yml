@@ -9,7 +9,7 @@ inputs:
     required: true
     description: get Dockerfile path
     default: ''
-
+# No hope to use dynamic image
 runs:
   using: 'docker'
-  image: "${{ secrets.username}}"
+  image: "./../../../Dockerfile"

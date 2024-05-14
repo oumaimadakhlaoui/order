@@ -15,7 +15,9 @@ jobs:
           name: ${{ secrets.username }}
       - name: Get action result
         run: echo "Really got ${{ steps.use-comp.outputs.action-result }}"
-      - name: Run Docker action
-        uses: ./.github/actions/build/
-        with:
-          dockerfile-path: './../../../Dockerfile'
+      - name: Run Dockerfile
+        run: docker build -f ./../docker/Dockerfile ./../../
+      #- name: Run Docker action
+      #  uses: ./.github/actions/build/
+      #  with:
+      #    dockerfile-path: './../../../Dockerfile'
