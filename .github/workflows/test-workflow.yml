@@ -17,3 +17,5 @@ jobs:
         run: echo "Really got ${{ steps.use-comp.outputs.action-result }}"
       - name: Run Docker action
         uses: ./.github/actions/build/
+        with:
+          dockerfile-path: './../../..'

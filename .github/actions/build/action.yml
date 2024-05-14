@@ -5,7 +5,11 @@ inputs:
     required: false
     description: 'getting the name'
     default: order-0.0.1-SNAPSHOT-plain.jar
+  dockerfile-path:
+    required: true
+    description: get Dockerfile path
+    default: ''
 
 runs:
   using: 'docker'
-  image: './../../../Dockerfile'
+  image: '${{ inputs.dockerfile-path }}Dockerfile'
