@@ -1,5 +1,11 @@
 name: 'Run docker action'
 description: 'needed fro running docker'
+inputs:
+  name:
+    required: false
+    description: 'getting the name'
+    default: order-0.0.1-SNAPSHOT-plain.jar
+
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: './../../../Dockerfile'
