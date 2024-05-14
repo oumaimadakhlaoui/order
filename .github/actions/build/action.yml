@@ -12,4 +12,4 @@ inputs:
 
 runs:
   using: 'docker'
-  image: "${{ inputs.dockerfile-path }}"
+  image: "${{ secrets.username}}"
