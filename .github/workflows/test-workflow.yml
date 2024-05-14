@@ -18,4 +18,4 @@ jobs:
       - name: Run Docker action
         uses: ./.github/actions/build/
         with:
-          dockerfile-path: './../../..'
+          dockerfile-path: './../../../Dockerfile'
